@@ -34,9 +34,7 @@ const getImages = (query) => {
   )
     .then((response) => response.json())
     .then((data) => showImages(data.hits))
-    .catch((error) => {
-      showError("something wrong");
-    });
+    .catch(error=> showError("Oops! Something Wrong,Please try later...!!!"))
 };
 
 let slideIndex = 0;
@@ -146,7 +144,7 @@ const dataSpinner = () => {
 };
 
 // Error Message Handeling
-const showError = (error) => {
-  const errorMssg = document.getElementById("error-msg");
-  errorMssg.innerText = error;
-};
+const showError=(error)=>{
+ const errorMssg= document.getElementById("error-msg");
+ errorMssg.innerText=error;
+}
