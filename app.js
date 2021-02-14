@@ -34,13 +34,14 @@ const getImages = (query) => {
   )
     .then((response) => response.json())
     .then((data) => showImages(data.hits))
-    .catch((err) => console.log(err));
+    .catch((error) => {
+      showError("something wrong");
+    });
 };
 
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
@@ -142,4 +143,10 @@ document
 const dataSpinner = () => {
   const loader = document.getElementById("loader");
   loader.classList.toggle("d-none");
+};
+
+// Error Message Handeling
+const showError = (error) => {
+  const errorMssg = document.getElementById("error-msg");
+  errorMssg.innerText = error;
 };
